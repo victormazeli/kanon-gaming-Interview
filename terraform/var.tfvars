@@ -1,0 +1,6 @@
+cluster_name      = "eks-kanon-devops-team"
+region            = "us-east-1"
+capacity_type     = "ON_DEMAND"
+node_role_name    = "eks-node-role"
+cluster_role_name = "eks-cluster-role"
+instance_type     = "t3.small"

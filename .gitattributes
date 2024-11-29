@@ -1,2 +1,30 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Terraform files
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Crash log files
+crash.log
+
+# Exclude override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Local .terraform directory
+.terraform/
+
+# Module cache
+.terraform.lock.hcl
+
+# IDE and editor folders
+.idea/
+.vscode/
+
+# Terraform plan files
+*.tfplan
+
+# Sensitive files
+*.pem
+*.key
