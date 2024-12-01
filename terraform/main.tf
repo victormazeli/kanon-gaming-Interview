@@ -1,8 +1,3 @@
-module "backup_bucket" {
-  source      = "./modules/s3_backup"
-  bucket_name = var.backup_bucket_name
-}
-
 module "vpc" {
   source       = "./modules/vpc"
   region       = var.region
