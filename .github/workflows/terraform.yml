@@ -54,10 +54,3 @@ jobs:
     - name: Terraform Apply
       if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.plan.outputs.exitcode == 0
       run: terraform apply -auto-approve tfplan
-
-    - name: Upload Terraform Plan Output
-      if: steps.plan.outcome == 'success'
-      uses: actions/upload-artifact@v2
-      with:
-        name: terraform-plan
-        path: tfplan
