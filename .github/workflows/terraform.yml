@@ -29,7 +29,7 @@ jobs:
       with:
         terraform_version: 1.1.7
 
-        
+
     - name: Terraform Init
       run: |
         terraform init \
@@ -38,21 +38,27 @@ jobs:
           -backend-config="region=${{ secrets.AWS_REGION }}" \
           -backend-config="dynamodb_table=${{ secrets.TF_LOCK_TABLE }}" \
           -backend-config="encrypt=true"
+      working-directory: ./terraform
 
     - name: Terraform Format
       run: terraform fmt -check -diff
+      working-directory: ./terraform
 
     - name: Terraform Validate
       run: terraform validate
+      working-directory: ./terraform
 
     - name: Terraform Plan
       id: plan
       run: terraform plan -out=tfplan
+      working-directory: ./terraform
 
     - name: Terraform Apply
       if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.plan.outputs.exitcode == 0
       run: terraform apply -auto-approve tfplan
+      working-directory: ./terraform
 
     - name: Upload Terraform State to S3
       run: |
-        aws s3 cp terraform.tfstate s3://${{ secrets.TF_STATE_BUCKET }}/${{ secrets.TF_STATE_KEY }} --region ${{ secrets.AWS_REGION }} 
+        aws s3 cp terraform.tfstate s3://${{ secrets.TF_STATE_BUCKET }}/${{ secrets.TF_STATE_KEY }} --region ${{ secrets.AWS_REGION }}
+      working-directory: ./terraform

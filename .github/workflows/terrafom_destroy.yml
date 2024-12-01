@@ -31,9 +31,12 @@ jobs:
           -backend-config="key=${{ secrets.TF_STATE_KEY }}" \
           -backend-config="region=${{ secrets.AWS_REGION }}" \
           -backend-config="encrypt=true"
+      working-directory: ./terraform
 
     - name: Terraform Plan (Destroy)
       run: terraform plan -destroy -out=tfdestroyplan
+      working-directory: ./terraform
 
     - name: Terraform Destroy
       run: terraform destroy -auto-approve
+      working-directory: ./terraform
