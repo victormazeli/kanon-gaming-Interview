@@ -3,6 +3,16 @@ variable "cluster_name" {
   type        = string
 }
 
+variable "backup_bucket_name" {
+  description = "bucket name"
+  type        = string
+}
+
+variable "repository_name" {
+  description = "ECR Name"
+  type        = string
+}
+
 variable "region" {
   description = "AWS region"
   type        = string

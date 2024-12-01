@@ -1,9 +1,18 @@
-module "vpc" {
-  source              = "./modules/vpc"
-  region              = var.region
-  cluster_name        = var.cluster_name
+module "backup_bucket" {
+  source      = "./modules/s3_backup"
+  bucket_name = var.backup_bucket_name
 }
 
+module "vpc" {
+  source       = "./modules/vpc"
+  region       = var.region
+  cluster_name = var.cluster_name
+}
+
+module "container_registry" {
+  source          = "./modules/ecr"
+  repository_name = var.repository_name
+}
 
 module "eks_cluster" {
   source             = "./modules/eks"

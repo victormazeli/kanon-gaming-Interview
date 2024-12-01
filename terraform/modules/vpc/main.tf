@@ -10,9 +10,9 @@ resource "aws_vpc" "eks_vpc" {
 }
 
 resource "aws_subnet" "eks-private-us-east-1a" {
-  vpc_id            = aws_vpc.eks_vpc.id
-  cidr_block        = "10.0.0.0/19"
-  availability_zone = "us-east-1a"
+  vpc_id                  = aws_vpc.eks_vpc.id
+  cidr_block              = "10.0.0.0/19"
+  availability_zone       = "us-east-1a"
   map_public_ip_on_launch = false
   tags = {
     "Name"                                      = "eks-private-us-east-1a"
@@ -21,9 +21,9 @@ resource "aws_subnet" "eks-private-us-east-1a" {
 }
 
 resource "aws_subnet" "eks-private-us-east-1b" {
-  vpc_id            = aws_vpc.eks_vpc.id
-  cidr_block        = "10.0.32.0/19"
-  availability_zone = "us-east-1b"
+  vpc_id                  = aws_vpc.eks_vpc.id
+  cidr_block              = "10.0.32.0/19"
+  availability_zone       = "us-east-1b"
   map_public_ip_on_launch = false
 
   tags = {
