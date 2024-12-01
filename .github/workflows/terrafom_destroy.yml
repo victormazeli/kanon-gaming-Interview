@@ -34,7 +34,7 @@ jobs:
       working-directory: ./terraform
 
     - name: Terraform Plan (Destroy)
-      run: terraform plan -destroy -out=tfdestroyplan
+      run: terraform plan -destroy -out=tfdestroyplan -var-file=var.tfvars
       working-directory: ./terraform
 
     - name: Terraform Destroy
