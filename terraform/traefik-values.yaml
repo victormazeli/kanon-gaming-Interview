@@ -1,0 +1,24 @@
+# traefik-values.yaml
+api:
+  dashboard: true
+
+ingressRoute:
+  dashboard:
+    enabled: true
+
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: victor.vic.mazeli@gmail.com
+      storage: /data/acme.json 
+      httpChallenge:
+        entryPoint: web
+
+service:
+  type: LoadBalancer
